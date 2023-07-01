@@ -131,6 +131,7 @@ const Text = styled.span`
 const PersonOption = styled.div`
    position: absolute;
    top: 53px;
+   z-index: 2;
    /* right:15%; */
    background-color: #fff;
    color: gray;

@@ -5,10 +5,26 @@
     font-family: "Poppins"
 }
 
+::-webkit-scrollbar{
+    width: 1.3rem;
+  }
+  
+  ::-webkit-scrollbar-track{
+    background-color: #fff;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: #003580;
+    border-radius: 1rem;
+    border: 0.4rem solid transparent;
+    background-clip: content-box;
+  }
+  
+
 .dates{
     position: absolute;
     top: 53px;
     left:25%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+    z-index: 2;
+    border-radius: 10px;
 }
