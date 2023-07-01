@@ -3,11 +3,11 @@ const Navbar = () => {
   return (
     <Navbarr>
       <NavContainer>
-        <Logo>amanBooking</Logo>
-        <NavItems>
+        <Logo>AmanBooking</Logo>
+        <NavBtns>
             <Button>Register</Button>
             <Button>Login</Button>
-        </NavItems>
+        </NavBtns>
       </NavContainer>
     </Navbarr>
   )
@@ -25,14 +25,23 @@ const Navbarr = styled.div`
     justify-content: center;
 `
 const NavContainer = styled.div`
-    
+    width: 100%;
+    max-width: 1024px;
+    /* background-color: red; */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 const Logo = styled.span`
-    
+    font-weight: 500;
 `
-const NavItems = styled.div`
-    
+const NavBtns = styled.div`
 `
 const Button = styled.button`
-    
+  margin-left: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #003580;
 `
