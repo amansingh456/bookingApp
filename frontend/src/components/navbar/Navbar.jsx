@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 const Navbar = () => {
+  const navigate = useNavigate()
   return (
     <Navbarr>
       <NavContainer>
-        <Logo>AmanBooking</Logo>
+        <Logo onClick={()=>navigate("/")}>BlisStay</Logo>
         <NavBtns>
             <Button>Register</Button>
             <Button>Login</Button>
@@ -34,7 +36,9 @@ const NavContainer = styled.div`
     justify-content: space-between;
 `
 const Logo = styled.span`
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 26px;
+    cursor: pointer;
 `
 const NavBtns = styled.div`
 `

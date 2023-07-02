@@ -5,8 +5,11 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderSearch = () => {
+   const navigate = useNavigate()
+   const [destination, setDestination] = useState("")
    const [openState, setOpenState] = useState(false)
    const [date, setDate] = useState([
       {
@@ -30,11 +33,15 @@ const HeaderSearch = () => {
       }})
    }
 
+   const handleSearch = () =>{
+      navigate("/hotels",{state:{destination,date,option}})
+   }
+
    return (
       <HeaderSearchh>
          <HeaderSearchItem>
             <FaBed color='grey' />
-            <Input type="text" placeholder='Where are you going ?' />
+            <Input type="text" placeholder='Where are you going ?' onChange={(e)=>setDestination(e.target.value)} />
          </HeaderSearchItem>
          <HeaderSearchItem>
             <FaCalendarDay color='grey' />
@@ -45,6 +52,7 @@ const HeaderSearch = () => {
                moveRangeOnFirstSelection={false}
                ranges={date}
                className='dates'
+               minDate={new Date()}
             />}
          </HeaderSearchItem>
          <HeaderSearchItem>
@@ -78,7 +86,7 @@ const HeaderSearch = () => {
             </PersonOption>}
          </HeaderSearchItem>
          <HeaderSearchItem>
-            <HeaderButton>Search</HeaderButton>
+            <HeaderButton onClick={handleSearch}>Search</HeaderButton>
          </HeaderSearchItem>
       </HeaderSearchh>
    )
