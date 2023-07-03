@@ -29,7 +29,7 @@ app.use("/api/users", usersRouter)
 // MiddleWare
 app.use(handleError)
     
-
+console.log(process.env.PORT)
 
 app.listen(process.env.PORT,async()=>{
     try {
@@ -39,4 +39,5 @@ app.listen(process.env.PORT,async()=>{
         console.log('error: ', error);
     }
     console.log("Server is running ❤️")
+    // console.log(process.env.PORT)
 })
