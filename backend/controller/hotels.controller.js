@@ -61,4 +61,38 @@ const getAllHotel = async(req,res,next)=>{
      }
 }
 
-module.exports={createHotel, updateHotel, deleteHotel, getHotel, getAllHotel}
+const countByCity = async(req,res,next)=>{
+    const cities = req.query.cities.split(",")
+    try {
+        const list =  await Promise.all(cities.map(city=>{
+            return HotelModel.countDocuments({city:city})
+        }))
+         console.log("Here is the All List....")
+         res.status(200).json(list)   
+     } catch (error) {
+         next(error)
+             // res.status(500).json({"error":error}) 
+     }
+}
+const countByType = async(req,res,next)=>{
+    try {
+        const  hotelCount  = await HotelModel.countDocuments({type:"hotel"})
+        const  appartmentCount  = await HotelModel.countDocuments({type:"appartment"})
+        const  villaCount  = await HotelModel.countDocuments({type:"villa"})
+        const  resortCount  = await HotelModel.countDocuments({type:"resort"})
+        const  cabinCount  = await HotelModel.countDocuments({type:"cabin"})
+         console.log("Here is the All Types related Hotels....")
+         res.status(200).json([
+            {type:"hotel", count:hotelCount},
+            {type:"appartment", count:appartmentCount},
+            {type:"villa", count:villaCount},
+            {type:"resort", count:resortCount},
+            {type:"cabin", count:cabinCount}
+         ])   
+     } catch (error) {
+         next(error)
+             // res.status(500).json({"error":error}) 
+     }
+}
+
+module.exports={createHotel, updateHotel, deleteHotel, getHotel, getAllHotel, countByCity, countByType}

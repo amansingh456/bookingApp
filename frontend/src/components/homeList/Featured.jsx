@@ -1,32 +1,38 @@
 import React from 'react'
 import { styled } from 'styled-components'
+import useFetch from '../../hooks/useFetch'
 
 const Featured = () => {
-  return (
-    <Featuredd>
-      <FeaturedItem>
-         <FeaturedImg src='/dublin.jpg' alt=''/>
-         <FeaturedTitle>
-            <H1>Dublin</H1>
-            <H1>123 properties</H1>
-         </FeaturedTitle>
-      </FeaturedItem>
-      <FeaturedItem>
-         <FeaturedImg src='/austin.jpg' alt=''/>
-         <FeaturedTitle>
-            <H1>Austin</H1>
-            <H1>532 properties</H1>
-         </FeaturedTitle>
-      </FeaturedItem>
-      <FeaturedItem>
-         <FeaturedImg src='/reno.jpg' alt=''/>
-         <FeaturedTitle>
-            <H1>Reno</H1>
-            <H1>224 properties</H1>
-         </FeaturedTitle>
-      </FeaturedItem>
-    </Featuredd>
-  )
+   const { data, loading, error } = useFetch("/hotels/countByCity?cities=berlin,london,gwalior")
+   console.log('data: ', data);
+   return (
+      <Featuredd>
+         {loading ? "...Loading Please Wait !" :
+            <>
+               <FeaturedItem>
+                  <FeaturedImg src='/dublin.jpg' alt='' />
+                  <FeaturedTitle>
+                     <H1>Berlin</H1>
+                     <H1>{data[0]} properties</H1>
+                  </FeaturedTitle>
+               </FeaturedItem>
+               <FeaturedItem>
+                  <FeaturedImg src='/austin.jpg' alt='' />
+                  <FeaturedTitle>
+                     <H1>London</H1>
+                     <H1>{data[1]} properties</H1>
+                  </FeaturedTitle>
+               </FeaturedItem>
+               <FeaturedItem>
+                  <FeaturedImg src='/reno.jpg' alt='' />
+                  <FeaturedTitle>
+                     <H1>Gwalior</H1>
+                     <H1>{data[2]} properties</H1>
+                  </FeaturedTitle>
+               </FeaturedItem>
+            </>}
+      </Featuredd>
+   )
 }
 
 export default Featured

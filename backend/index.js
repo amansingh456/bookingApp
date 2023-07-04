@@ -6,17 +6,19 @@ const { roomsRouter } = require("./routes/rooms.routes")
 const { usersRouter } = require("./routes/users.routes")
 const { handleError } = require("./middleware/errorHandler.middleware")
 const cookieParser = require("cookie-parser")
+const cors = require("cors")
 require("dotenv").config()
 
 
 const app = express()
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
 
 
 
 app.get("/",(req,res)=>{
-    res.send("Hello, Babes..!")
+    res.send("Game On,..!")
 })
 
 
@@ -29,7 +31,6 @@ app.use("/api/users", usersRouter)
 // MiddleWare
 app.use(handleError)
     
-console.log(process.env.PORT)
 
 app.listen(process.env.PORT,async()=>{
     try {
@@ -39,5 +40,4 @@ app.listen(process.env.PORT,async()=>{
         console.log('error: ', error);
     }
     console.log("Server is running ❤️")
-    // console.log(process.env.PORT)
 })

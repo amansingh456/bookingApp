@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const HeaderSearch = () => {
    const navigate = useNavigate()
-   const [destination, setDestination] = useState("")
+   const [destination, setDestination] = useState("where are you going ?")
    const [openState, setOpenState] = useState(false)
    const [date, setDate] = useState([
       {
@@ -36,7 +36,6 @@ const HeaderSearch = () => {
    const handleSearch = () =>{
       navigate("/hotels",{state:{destination,date,option}})
    }
-
    return (
       <HeaderSearchh>
          <HeaderSearchItem>
