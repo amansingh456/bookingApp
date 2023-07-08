@@ -96,3 +96,9 @@ const countByType = async(req,res,next)=>{
 }
 
 module.exports={createHotel, updateHotel, deleteHotel, getHotel, getAllHotel, countByCity, countByType}
+
+
+
+
+
+// hero hu me hero...😂
